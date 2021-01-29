@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace BitcoinBlockexplorer.Helper
+namespace BitcoinBlockexplorer.Models
 {
     public class Block
     {
-        public Result result { get; set; }
+        public BlockResult result { get; set; }
         public object error { get; set; }
         public string id { get; set; }
     }
 
-    public class Result
+    public class BlockResult
     {
         public string hash { get; set; }
         public long confirmations { get; set; }

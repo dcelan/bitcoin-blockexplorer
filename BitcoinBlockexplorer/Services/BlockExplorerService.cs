@@ -6,7 +6,6 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using BitcoinBlockexplorer.Models;
-using BitcoinBlockexplorer.Helper;
 using Newtonsoft.Json;
 using System.Text;
 
@@ -80,6 +79,36 @@ namespace BitcoinBlockexplorer.Services
                 var result = await _httpClient.PostAsync("/", queryString);
                 var jsonResponse = await result.Content.ReadAsStringAsync();
                 var blockResponse = JsonConvert.DeserializeObject<Block>(jsonResponse);
+
+                return blockResponse;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.ToString());
+            }
+        } 
+        
+        public async Task<List<MempoolEntry>> GetMempoolEntries(List<string> txids)
+        {            
+            var mempoolEntries = new List<MempoolEntry>();
+
+            foreach (var txid in txids)
+            {
+                MempoolEntry mempoolEntry = await GetMempoolEntry(txid);
+                mempoolEntries.Add(mempoolEntry);
+            }           
+
+            return mempoolEntries;
+        }
+
+        public async Task<MempoolEntry> GetMempoolEntry(string txid)
+        {
+            try
+            {
+                var queryString = CreateRequestData("getmempoolentry", new List<string> { txid });
+                var result = await _httpClient.PostAsync("/", queryString);
+                var jsonResponse = await result.Content.ReadAsStringAsync();
+                var blockResponse = JsonConvert.DeserializeObject<MempoolEntry>(jsonResponse);
 
                 return blockResponse;
             }

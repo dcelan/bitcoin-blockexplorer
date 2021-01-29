@@ -1,4 +1,4 @@
-﻿using BitcoinBlockexplorer.Helper;
+﻿using BitcoinBlockexplorer.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,5 +11,7 @@ namespace BitcoinBlockexplorer.Services.Interfaces
         Task<string> GetResultsFromHost(string queryJson);
         Task<List<Block>> GetNLastBlocks(int n, string startingBlockHash);
         Task<Block> GetBlock(string blockHash);
+        Task<List<MempoolEntry>> GetMempoolEntries(List<string> txids);
+        Task<MempoolEntry> GetMempoolEntry(string txid);
     }
 }

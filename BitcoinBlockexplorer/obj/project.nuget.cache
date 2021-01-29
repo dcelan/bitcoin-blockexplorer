@@ -1,8 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "AlqD/xv8rGGgpnU6BsFS8gIGiqZ7j+R7scswuFwEbBuUqh3Bcx9CO9qUFkhOuGApDjKbrcafILVbLd1zA3bG0g==",
+  "dgSpecHash": "D1qpLLHRAX8PxlgD4474cjpmBHUwh5TGHUFWpgQ/x9kJS9j7Axf/RDK1DWz2S8E7cusg5V+GxS6JlORb9SzQGA==",
   "success": true,
   "projectFilePath": "C:\\Users\\dcelan\\Documents\\GitHub\\bitcoin-blockexplorer\\BitcoinBlockexplorer\\BitcoinBlockexplorer.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\dcelan\\.nuget\\packages\\blockchainapi.net\\1.0.1\\blockchainapi.net.1.0.1.nupkg.sha512",
+    "C:\\Users\\dcelan\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512"
+  ],
   "logs": []
 }

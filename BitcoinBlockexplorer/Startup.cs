@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using BitcoinBlockexplorer.Services;
+using BitcoinBlockexplorer.Services.Interfaces;
 
 namespace BitcoinBlockexplorer
 {
@@ -24,6 +26,13 @@ namespace BitcoinBlockexplorer
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            BlockchainHostConfiguration.Host = Configuration["BlockchainHostSettings:Host"];
+            BlockchainHostConfiguration.Port = Configuration["BlockchainHostSettings:Port"];
+            BlockchainHostConfiguration.Username = Configuration["BlockchainHostSettings:Username"];
+            BlockchainHostConfiguration.Password = Configuration["BlockchainHostSettings:Password"];
+
+            services.AddTransient<IBlockExplorerService, BlockExplorerService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

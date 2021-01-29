@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using BitcoinBlockexplorer.Services.Interfaces;
+using BitcoinBlockexplorer.Helper;
 
 namespace BitcoinBlockexplorer.Controllers
 {
@@ -18,13 +19,31 @@ namespace BitcoinBlockexplorer.Controllers
             _blockExplorerService = blockExplorerService;
         }
 
-        [HttpPost]
-        [Route("getresults")]
+        [HttpGet]
+        [Route("getresultsfromhost")]
         public async Task<ActionResult> GetResultsFromHost (string queryJson)
         {
             var result = await _blockExplorerService.GetResultsFromHost(queryJson);
 
             return Ok(result);
+        }
+        
+        [HttpGet]
+        [Route("getblock")]
+        public async Task<Block> GetBlock(string blockHash)
+        {
+            var result = await _blockExplorerService.GetBlock(blockHash);
+
+            return result;
+        }
+        
+        [HttpGet]
+        [Route("getnlastblocks")]
+        public async Task<List<Block>> GetNLastBlocks(int numberOfBlocks, string startingBlockHash)
+        {
+            var result = await _blockExplorerService.GetNLastBlocks(numberOfBlocks, startingBlockHash);
+
+            return result;
         }
     }
 }

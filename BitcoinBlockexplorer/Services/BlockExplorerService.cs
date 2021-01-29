@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using BitcoinBlockexplorer.Models;
+using BitcoinBlockexplorer.Helper;
 using Newtonsoft.Json;
 using System.Text;
 
@@ -53,6 +54,55 @@ namespace BitcoinBlockexplorer.Services
             {
                 throw new Exception(ex.ToString());
             }
+        }
+
+        public async Task<List<Block>> GetNLastBlocks(int n, string startingBlockHash)
+        {
+            var nextBlockHash = startingBlockHash;
+            var blocks = new List<Block>();
+
+            while (n > 0)
+            {
+                Block currentBlock = await GetBlock(nextBlockHash);
+                blocks.Add(currentBlock);
+                n--;
+                nextBlockHash = currentBlock.result.previousblockhash;
+            }
+
+            return blocks;
+        }
+
+        public async Task<Block> GetBlock(string blockHash)
+        {
+            try
+            {
+                var queryString = CreateRequestData("getblock", new List<string> { blockHash });
+                var result = await _httpClient.PostAsync("/", queryString);
+                var jsonResponse = await result.Content.ReadAsStringAsync();
+                var blockResponse = JsonConvert.DeserializeObject<Block>(jsonResponse);
+
+                return blockResponse;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.ToString());
+            }
+        }
+
+        private StringContent CreateRequestData(string methodName, List<string> parameters)
+        {
+            var requestData = new BitcoinApiRequestData()
+            {
+                Jsonrpc = "1.0",
+                Id = "curltest",
+                Method = methodName,
+                Params = parameters
+            };
+
+            var queryJson = JsonConvert.SerializeObject(requestData).ToLower();
+            var queryString = new StringContent(queryJson, Encoding.UTF8, "application/json");
+
+            return queryString;
         }
 
         #endregion Methods

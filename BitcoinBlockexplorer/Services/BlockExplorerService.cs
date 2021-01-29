@@ -39,11 +39,11 @@ namespace BitcoinBlockexplorer.Services
 
         #region Methods
 
-        public async Task<string> GetRawTransaction(string methodName, List<string> parameters)
+        public async Task<string> GetResultsFromHost(string queryJson)
         {
             try
             {                
-                var queryString = CreateRequestData(methodName, parameters);
+                var queryString = new StringContent(queryJson, Encoding.UTF8, "application/json");
                 var result = await _httpClient.PostAsync("/", queryString);
                 var response = await result.Content.ReadAsStringAsync();
 
@@ -53,22 +53,6 @@ namespace BitcoinBlockexplorer.Services
             {
                 throw new Exception(ex.ToString());
             }
-        }
-
-        private StringContent CreateRequestData(string methodName, List<string> parameters)
-        {
-            var requestData = new BitcoinApiRequestData()
-            {
-                Jsonrpc = "1.0",
-                Id = "curltest",
-                Method = methodName,
-                Params = parameters
-            };
-
-            var queryJson = JsonConvert.SerializeObject(requestData).ToLower();
-            var queryString = new StringContent(queryJson, Encoding.UTF8, "application/json");
-
-            return queryString;
         }
 
         #endregion Methods

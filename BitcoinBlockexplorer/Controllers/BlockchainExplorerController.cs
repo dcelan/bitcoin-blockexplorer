@@ -19,10 +19,10 @@ namespace BitcoinBlockexplorer.Controllers
         }
 
         [HttpPost]
-        [Route("getrawtransaction")]
-        public async Task<ActionResult> GetRawTransaction(List<string> parameters)
+        [Route("getresults")]
+        public async Task<ActionResult> GetResultsFromHost (string queryJson)
         {
-            var result = await _blockExplorerService.GetRawTransaction("getrawtransaction", parameters);
+            var result = await _blockExplorerService.GetResultsFromHost(queryJson);
 
             return Ok(result);
         }

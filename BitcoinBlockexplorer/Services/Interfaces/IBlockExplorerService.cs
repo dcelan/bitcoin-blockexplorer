@@ -7,6 +7,6 @@ namespace BitcoinBlockexplorer.Services.Interfaces
 {
     public interface IBlockExplorerService
     {
-        Task<string> GetRawTransaction(string methodName, List<string> parameters);
+        Task<string> GetResultsFromHost(string queryJson);
     }
 }

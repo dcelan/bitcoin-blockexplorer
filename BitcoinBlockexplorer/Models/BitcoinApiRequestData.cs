@@ -13,6 +13,6 @@ namespace BitcoinBlockexplorer.Models
 
         public string Method { get; set; }
 
-        public List<string> Params { get; set; }
+        public string Params { get; set; }
     }
 }

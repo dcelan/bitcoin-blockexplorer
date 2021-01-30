@@ -56,7 +56,7 @@ export default {
 </script>
 
 <template>
-  <div>
+  <b-card class="mt-1">
     <b-table outlined
               hover
               primary-key="hash"
@@ -67,5 +67,5 @@ export default {
               style="cursor:pointer">           
     </b-table>
     <b-button @click="loadMoreMempoolEntries" block variant="outline-secondary">Load More</b-button>
-  </div>
+  </b-card>
 </template>

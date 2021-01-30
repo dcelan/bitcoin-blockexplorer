@@ -4,11 +4,12 @@ import Vue from 'vue'
 import App from './App.vue'
 import RequestHelper from './utils/request-helper'
 import GridHelper from './utils/grid-helper'
-import { BootstrapVue } from 'bootstrap-vue'
+import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 
 Vue.config.productionTip = false
 
 Vue.use(BootstrapVue)
+Vue.use(IconsPlugin)
 Vue.use(RequestHelper)
 Vue.use(GridHelper)
 

@@ -19,30 +19,42 @@ export default {
   },  
   data() {
       return {
+        loading: true,
         blockDetails: null,
         blockStatistics: null
       }
   },
   created() {
     this.blockDetails = this.startingBlockDetails
-    Axios
-      .get('/api/BlockChainExplorer/getresultsfromhost?queryJson=' + this.$createRequestData("getblockstats", [this.blockDetails.result.height]))
-      .then(response => {
-          this.blockStatistics = response.data.result
-      })
-      .catch(error => {
-          this.$bvToast.toast(error.response.data,
-              { title: this.$t('error'), variant: "danger", solid: true })
-      })
+    this.getBlockStatistics(this.blockDetails.result.height)
   },
   methods: {
-    
+    changeBlockDetails(blockHash){
+      this.loading = true
+        Axios
+          .get('/api/BlockChainExplorer/getblock?blockHash=' + blockHash)
+          .then(response => {
+              this.blockDetails = response.data
+              this.getBlockStatistics(response.data.result.height)
+          })
+    },
+    getBlockStatistics(blockHeight){
+      Axios
+        .get('/api/BlockChainExplorer/getresultsfromhost?queryJson=' + this.$createRequestData("getblockstats", [blockHeight]))
+        .then(response => {
+            this.blockStatistics = response.data.result
+        })
+        .finally(() => {
+          this.loading = false
+        })
+    }
   }
 }
 </script>
 
 <template>
-  <div>
+  <b-overlay :show="loading" variant="white">
+    
     <div class="text-right">
       <b-button variant="light" @click="$emit('back')"> Back</b-button>
     </div>
@@ -54,7 +66,7 @@ export default {
       <div class="card-body p-1">
         <b-row>
           <b-col lg="12" class="p-1">
-            <BlockDetailsLinks :blockDetails="blockDetails" :blockStatistics="blockStatistics" />
+            <BlockDetailsLinks :blockDetails="blockDetails" :blockStatistics="blockStatistics" @change-block-details="changeBlockDetails" />
           </b-col>
         </b-row>
         <b-row>
@@ -73,5 +85,5 @@ export default {
       </div>
     </div>
 
-  </div>
+  </b-overlay>
 </template>

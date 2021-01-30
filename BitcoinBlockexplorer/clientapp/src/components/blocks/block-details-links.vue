@@ -13,7 +13,7 @@
 
 <template>
     <b-card class="mt-1">
-        <div v-if="blockDetails && blockStatistics">  
+        <div v-if="blockDetails && blockStatistics">
 
             <div class="row">
                 <div class="col text-left title">Block</div>
@@ -23,27 +23,33 @@
                 </div>
                 <div class="w-100"></div>
                 <div class="col text-left title">Previous block</div>
-                <div class="col text-right clickable-text" v-if="blockDetails.result.previousblockhash">
+                <div class="col text-right clickable-text"
+                    @click="$emit('change-block-details', blockDetails.result.previousblockhash)"
+                    v-if="blockDetails.result.previousblockhash">
                     {{blockDetails.result.previousblockhash}} <b-icon
-                        @click="$copyToClipboard(blockDetails.result.previousblockhash)" class="clickable-icon" icon="clipboard"
-                        style="color:black"></b-icon>
+                        @click="$copyToClipboard(blockDetails.result.previousblockhash)" class="clickable-icon"
+                        icon="clipboard" style="color:black"></b-icon>
                 </div>
                 <div class="w-100"></div>
                 <div class="col text-left title">Next block</div>
-                <div class="col text-right clickable-text" v-if="blockDetails.result.nextblockhash">
-                    {{blockDetails.result.nextblockhash}} <b-icon @click="$copyToClipboard(blockDetails.result.nextblockhash)"
-                        class="clickable-icon" icon="clipboard"></b-icon>
+                <div class="col text-right clickable-text"
+                    @click="$emit('change-block-details', blockDetails.result.nextblockhash)"
+                    v-if="blockDetails.result.nextblockhash">
+                    {{blockDetails.result.nextblockhash}} <b-icon
+                        @click="$copyToClipboard(blockDetails.result.nextblockhash)" class="clickable-icon"
+                        icon="clipboard"></b-icon>
                 </div>
                 <div class="w-100"></div>
                 <div class="col text-left title">Merkle root</div>
                 <div class="col text-right" v-if="blockDetails.result.merkleroot">{{blockDetails.result.merkleroot}}
-                    <b-icon @click="$copyToClipboard(blockDetails.result.merkleroot)" class="clickable-icon" icon="clipboard">
+                    <b-icon @click="$copyToClipboard(blockDetails.result.merkleroot)" class="clickable-icon"
+                        icon="clipboard">
                     </b-icon>
                 </div>
                 <div class="w-100"></div>
             </div>
-            
-        </div>           
+
+        </div>
     </b-card>
 </template>
 

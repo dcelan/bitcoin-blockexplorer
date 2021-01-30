@@ -1,5 +1,5 @@
 <script>
-import Blocks from '@components/blocks-tab'
+import Blocks from '@components/blocks/blocks-tab'
 import Transactions from '@components/transactions-tab'
 import PageHeader from '@components/layout/page-header'
 

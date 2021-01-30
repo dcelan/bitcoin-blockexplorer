@@ -30,8 +30,8 @@ export default {
 <template>
   <div>
     <b-tabs content-class="mt-3">
-      <b-tab title="First" active><Blocks /></b-tab>
-      <b-tab title="Second"><Transactions /></b-tab>
+      <b-tab title="Blocks" active><Blocks /></b-tab>
+      <b-tab title="Transactions"><Transactions /></b-tab>
     </b-tabs>
   </div>
 </template>

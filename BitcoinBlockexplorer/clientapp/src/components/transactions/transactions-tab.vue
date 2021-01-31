@@ -39,8 +39,8 @@ export default {
         increasement = this.rawMempool.length - this.transactions.length
       }
       if (increasement <= 0){
-         this.$bvToast.toast("There are no more transactions in mempool. Try refreshing page or search for transaction(s).",
-              { title: "Warrning", variant: "info", solid: true })
+         this.$bvToast.toast("There are no more transactions in mempool. Try to refresh page or search for transaction.",
+              { title: "Warning", variant: "info", solid: true })
       } else {
         this.getTransactions(this.rawMempool.slice(this.transactions.length, this.transactions.length + increasement))
       }      

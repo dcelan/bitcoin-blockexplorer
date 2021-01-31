@@ -13,14 +13,17 @@
         <div v-if="transactionDetails">  
 
             <div class="row">
-                <div class="col text-left title">Time</div>
-                <div v-if="transactionDetails.result.time == 0"><i>Data not yet available</i></div>
-                <div v-else class="col text-right">{{$secondsToDateTime(transactionDetails.result.time)}}</div>
-                <div class="w-100"></div>    
-                <div class="col text-left title">Block time</div>
-                <div v-if="transactionDetails.result.time == 0"><i>Data not yet available</i></div>
-                <div v-else class="col text-right">{{$secondsToDateTime(transactionDetails.result.blocktime)}}</div>
-                <div class="w-100"><hr></div>    
+                <div v-if="transactionDetails.result.time != 0">
+                    <div class="col text-left title">Time</div>
+                    <div class="col text-right">{{$secondsToDateTime(transactionDetails.result.time)}}</div>
+                    <div class="w-100"></div>
+                </div>
+
+                <div v-if="transactionDetails.result.blocktime != 0">
+                    <div class="col text-left title">Block time</div>
+                    <div class="col text-right">{{$secondsToDateTime(transactionDetails.result.blocktime)}}</div>
+                    <div class="w-100"><hr></div>  
+                </div>
 
                 <div class="col text-left title">Size</div>
                 <div class="col text-right">{{transactionDetails.result.size}} B</div>

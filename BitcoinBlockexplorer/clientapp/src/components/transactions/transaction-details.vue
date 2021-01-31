@@ -56,7 +56,7 @@ export default {
   <b-overlay :show="loading" variant="white">
     
     <div class="text-right">
-      <b-button variant="light" @click="$emit('back')"> Back</b-button>
+      <b-button variant="outline-secondary" @click="$emit('back')"> Back</b-button>
     </div>
 
     <h5 class="card-title text-primary">Bitcoin transaction</h5>

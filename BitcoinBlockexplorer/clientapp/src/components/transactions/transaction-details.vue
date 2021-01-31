@@ -7,7 +7,7 @@ import TransactionDetailsSenders from '@components/transactions/transaction-deta
 
 export default {
   props: {
-      startingTxDetails: {
+      txDetails: {
           type: Object
       },
   },
@@ -25,9 +25,8 @@ export default {
       }
   },
   created() {
-    this.transactionDetails = this.startingTxDetails
-    this.getAdditionalTxDetails(this.startingTxDetails.result.txid)
-    this.loading = false
+    this.transactionDetails = this.txDetails
+    this.getAdditionalTxDetails(this.txDetails.result.txid)
   },
   methods: {
     changeTransactionDetails(transactionId){
@@ -37,16 +36,16 @@ export default {
           .then(response => {
               this.transactionDetails = response.data
               this.getAdditionalTxDetails(response.data.result.txid)
-          })
-          .finally(() => {
-            this.loading = false
-          })
+          })          
     },
     getAdditionalTxDetails(transactionId){
       Axios
           .get('/api/BlockChainExplorer/getadditionaltxinfo?transactionId=' + transactionId)
           .then(response => {
               this.additionalTxDetails = response.data.data[transactionId]
+          })
+          .finally(() => {
+            this.loading = false
           })
     }
   }

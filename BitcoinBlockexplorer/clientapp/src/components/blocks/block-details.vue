@@ -4,6 +4,7 @@ import BlockDetailsSimpleData from '@components/blocks/block-details-simple-data
 import BlockDetailsLinks from '@components/blocks/block-details-links'
 import BlockDetailsFees from '@components/blocks/block-details-fees'
 import BlockDetailsFeeRates from '@components/blocks/block-details-fee-rates'
+import BlockTransactions from '@components/blocks/block-transactions'
 
 export default {
   props: {
@@ -15,7 +16,8 @@ export default {
     BlockDetailsSimpleData,
     BlockDetailsLinks,
     BlockDetailsFees,
-    BlockDetailsFeeRates
+    BlockDetailsFeeRates,
+    BlockTransactions
   },  
   data() {
       return {
@@ -80,6 +82,11 @@ export default {
           </b-col>
           <b-col lg="6" class="p-1">
             <BlockDetailsFeeRates :blockDetails="blockDetails" :blockStatistics="blockStatistics" />
+          </b-col>
+        </b-row>
+        <b-row>
+          <b-col lg="12" class="p-1">
+            <BlockTransactions :transactionsIds="blockDetails.result.tx" />
           </b-col>
         </b-row>
       </div>

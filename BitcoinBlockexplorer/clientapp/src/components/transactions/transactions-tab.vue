@@ -8,15 +8,13 @@ export default {
   },
   data() {
       return {
-        startingTxDetails: null,
+        txDetails: null,
         rawMempool: null, //transactionIds
         transactions: [], //transactions from mempool shown on the screen
         fields: [ 
-          { key: 'result.txid', label: "TXID", sortable: true },
+          { key: 'result.txid', label: "TXID", sortable: false },
           { key: 'result.size', label: "Size (B)", sortable: true },
-          { key: 'value', label: "Output (tBTC)", sortable: true },
-          // { key: 'value2', label: "Input (tBTC)", sortable: true },
-          // { key: 'fee', label: "Fee (tBTC)", sortable: true },
+          { key: 'value', label: "Output (tBTC)", sortable: false },
         ]
       }
   },
@@ -53,10 +51,10 @@ export default {
         })
     },
     showTransactionDetails(record){
-      this.startingTxDetails = record
+      this.txDetails = record
     },
     back(){
-      this.startingTxDetails = null
+      this.txDetails = null
     }
   }
 }
@@ -64,7 +62,7 @@ export default {
 
 <template>
   <b-card class="mt-1">
-    <div v-if="startingTxDetails == null">
+    <div v-if="txDetails == null">
       <b-table outlined
                 hover
                 primary-key="hash"
@@ -76,13 +74,7 @@ export default {
                 style="cursor:pointer">  
               <template v-slot:cell(value)="row">
                     {{$outputTotal(row.item)}}
-              </template>   
-              <!-- <template v-slot:cell(value2)="row">
-                    {{$inputTotal(row.item)}}
-              </template>    -->
-              <!-- <template v-slot:cell(fee)="row">
-                    {{$transactionFee(row.item)}}
-              </template>    -->
+              </template>
       </b-table>
 
       <div class="text-center" style="padding:0.5rem 0">
@@ -92,6 +84,6 @@ export default {
       </div>
     </div>  
 
-    <TransactionDetails v-else :startingTxDetails="startingTxDetails" @back="back" />
+    <TransactionDetails v-else :txDetails="txDetails" @back="back" />
   </b-card>
 </template>

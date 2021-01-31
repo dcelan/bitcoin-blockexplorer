@@ -4,7 +4,7 @@
             transactionDetails: {
                 type: Object
             },
-        },
+        }
     }
 </script>
 
@@ -13,18 +13,14 @@
         <div v-if="transactionDetails">  
 
             <div class="row">
-                <div v-if="transactionDetails.result.time != 0">
-                    <div class="col text-left title">Time</div>
-                    <div class="col text-right">{{$secondsToDateTime(transactionDetails.result.time)}}</div>
-                    <div class="w-100"></div>
-                </div>
 
-                <div v-if="transactionDetails.result.blocktime != 0">
-                    <div class="col text-left title">Block time</div>
-                    <div class="col text-right">{{$secondsToDateTime(transactionDetails.result.blocktime)}}</div>
-                    <div class="w-100"><hr></div>  
-                </div>
-
+                <div v-if="transactionDetails.result.time" class="col text-left title">Time</div>
+                <div v-if="transactionDetails.result.time" class="col text-right">{{$secondsToDateTime(transactionDetails.result.time)}}</div>
+                <div class="w-100"></div>
+                <div v-if="transactionDetails.result.blocktime" class="col text-left title">Block time</div>
+                <div v-if="transactionDetails.result.blocktime" class="col text-right">{{$secondsToDateTime(transactionDetails.result.blocktime)}}</div>
+                <div class="w-100"><hr></div>
+                
                 <div class="col text-left title">Size</div>
                 <div class="col text-right">{{transactionDetails.result.size}} B</div>
                 <div class="w-100"></div>                
@@ -45,7 +41,6 @@
                 <div class="col text-right">{{transactionDetails.result.locktime}}</div>
                 <div class="w-100"><hr></div>    
 
-                <div class="w-100"></div>
                 <div class="col text-left title">Transaction hash</div>
                 <div class="col text-right" v-if="transactionDetails.result.hash"
                     @click="$emit('change-block-details', transactionDetails.result.hash)">
@@ -53,13 +48,12 @@
                         class="clickable-icon" icon="clipboard" style="color:black"></b-icon>
                 </div>
                 <div class="w-100"></div>
-                <div class="col text-left title">Block hash</div>
-                <div class="col text-right" v-if="transactionDetails.result.blockhash"
+                <div v-if="transactionDetails.result.blockhash" class="col text-left title">Block hash</div>
+                <div v-if="transactionDetails.result.blockhash" class="col text-right"
                     @click="$emit('change-block-details', transactionDetails.result.blockhash)">
-                    {{transactionDetails.result.blockhash}} <b-icon
-                        @click="$copyToClipboard(transactionDetails.result.blockhash)" class="clickable-icon"
-                        icon="clipboard"></b-icon>
-                </div>             
+                    {{transactionDetails.result.blockhash}} <b-icon @click="$copyToClipboard(transactionDetails.result.blockhash)"
+                        class="clickable-icon" icon="clipboard"></b-icon>
+                </div>
             </div>            
         </div>           
     </b-card>

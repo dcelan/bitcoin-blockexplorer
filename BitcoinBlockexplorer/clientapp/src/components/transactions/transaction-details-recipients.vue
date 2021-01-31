@@ -29,6 +29,7 @@
                 <b-row>                    
                     <b-col class="lg-6 text-left">{{output.recipient}}</b-col>
                     <b-col class="lg-6 text-right">{{$satoshiToBTC(output.value)}} tBTC</b-col>
+                    <div class="w-100"><hr></div>
                 </b-row>                    
             </div>                        
         </div>           

@@ -1,6 +1,6 @@
 <script>
 import Blocks from '@components/blocks/blocks-tab'
-import Transactions from '@components/transactions-tab'
+import Transactions from '@components/transactions/transactions-tab'
 import PageHeader from '@components/layout/page-header'
 
 export default {
@@ -8,23 +8,6 @@ export default {
     Blocks,
     Transactions,
     PageHeader
-  },
-  data() {
-      return {
-        test: null
-      }
-  },
-  created() {
-    // Axios
-    //   .get('/api/BlockChainExplorer/getresultsfromhost?queryJson=' + this.$createRequestData("getrawtransaction", ["194413584f3920fe5c97566e0d43cbc5707da4d0f121ca1f5435007181cb003b"]))
-    //   .then(response => {
-    //       console.log(response.data)
-    //       this.test = response.data
-    //   })
-    //   .catch(error => {
-    //       this.$bvToast.toast(error.response.data,
-    //           { title: this.$t('error'), variant: "danger", solid: true })
-    //   })
   },
 }
 </script>

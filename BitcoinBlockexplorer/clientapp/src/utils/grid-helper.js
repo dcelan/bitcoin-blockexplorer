@@ -12,7 +12,7 @@
         Vue.prototype.$secondsToDateTime = function (seconds) {         
             var time = new Date(1970, 0, 1); //Epoch
             time.setSeconds(seconds);
-            return time.toLocaleString('en-GB')
+            return time.toLocaleString('hr-HR')
         }    
 
         Vue.prototype.$copyToClipboard = function (data) {         

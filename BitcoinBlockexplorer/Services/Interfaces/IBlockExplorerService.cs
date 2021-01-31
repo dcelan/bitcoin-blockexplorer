@@ -13,5 +13,8 @@ namespace BitcoinBlockexplorer.Services.Interfaces
         Task<Block> GetBlock(string blockHash);
         Task<List<MempoolEntry>> GetMempoolEntries(List<string> txids);
         Task<MempoolEntry> GetMempoolEntry(string txid);
+        Task<List<Transaction>> GetTransactions(List<string> txids);
+        Task<Transaction> GetTransaction(string txid);
+        Task<string> GetAdditionalTxInfo(string txid);
     }
 }

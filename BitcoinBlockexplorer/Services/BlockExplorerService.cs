@@ -73,21 +73,52 @@ namespace BitcoinBlockexplorer.Services
 
         public async Task<Block> GetBlock(string blockHash)
         {
-            try
-            {
-                var queryString = CreateRequestData("getblock", new List<string> { blockHash });
-                var result = await _httpClient.PostAsync("/", queryString);
-                var jsonResponse = await result.Content.ReadAsStringAsync();
-                var blockResponse = JsonConvert.DeserializeObject<Block>(jsonResponse);
+            var queryString = CreateRequestData("getblock", new List<string> { blockHash });
+            var result = await _httpClient.PostAsync("/", queryString);
+            var jsonResponse = await result.Content.ReadAsStringAsync();
+            var block = JsonConvert.DeserializeObject<Block>(jsonResponse);
 
-                return blockResponse;
-            }
-            catch (Exception ex)
+            if (block.error != null)
+                throw new Exception(jsonResponse);
+
+            return block;
+        }
+
+        public async Task<List<Transaction>> GetTransactions(List<string> txids)
+        {
+            var transactions = new List<Transaction>();
+
+            foreach (var txid in txids)
             {
-                throw new Exception(ex.ToString());
+                Transaction transaction = await GetTransaction(txid);
+                transactions.Add(transaction);
             }
-        } 
-        
+
+            return transactions;
+        }
+
+        public async Task<Transaction> GetTransaction(string txid)
+        {
+            //TODO: Write method that receives different kind of object types into List
+
+            var queryJson = "{\"jsonrpc\":\"1.0\"," +
+                "\"id\":\"curltest\"," +
+                "\"method\":\"getrawtransaction\"," +
+                "\"params\":[\"" + txid + "\",true]}";
+            var queryString = new StringContent(queryJson, Encoding.UTF8, "application/json");
+
+            var result = await _httpClient.PostAsync("/", queryString);
+            var jsonResponse = await result.Content.ReadAsStringAsync();
+            var transaction = JsonConvert.DeserializeObject<Transaction>(jsonResponse);
+
+            if (transaction.error != null)
+                throw new Exception(jsonResponse);
+            else
+                transaction.result.txid = txid;
+
+            return transaction;
+        }
+
         public async Task<List<MempoolEntry>> GetMempoolEntries(List<string> txids)
         {            
             var mempoolEntries = new List<MempoolEntry>();
@@ -103,19 +134,26 @@ namespace BitcoinBlockexplorer.Services
 
         public async Task<MempoolEntry> GetMempoolEntry(string txid)
         {
-            try
-            {
-                var queryString = CreateRequestData("getmempoolentry", new List<string> { txid });
-                var result = await _httpClient.PostAsync("/", queryString);
-                var jsonResponse = await result.Content.ReadAsStringAsync();
-                var blockResponse = JsonConvert.DeserializeObject<MempoolEntry>(jsonResponse);
+            var queryString = CreateRequestData("getmempoolentry", new List<string> { txid });
+            var result = await _httpClient.PostAsync("/", queryString);
+            var jsonResponse = await result.Content.ReadAsStringAsync();
+            var mempoolEntry = JsonConvert.DeserializeObject<MempoolEntry>(jsonResponse);
 
-                return blockResponse;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.ToString());
-            }
+            if (mempoolEntry.error != null)
+                throw new Exception(jsonResponse);
+            else
+                mempoolEntry.result.txid = txid;
+
+            return mempoolEntry;
+        }
+        
+        public async Task<string> GetAdditionalTxInfo(string txid)
+        {
+            var client = new HttpClient();
+            var result = await client.GetAsync("https://api.blockchair.com/bitcoin/testnet/dashboards/transaction/" + txid);
+            var jsonResponse = await result.Content.ReadAsStringAsync();            
+
+            return jsonResponse;
         }
 
         private StringContent CreateRequestData(string methodName, List<string> parameters)

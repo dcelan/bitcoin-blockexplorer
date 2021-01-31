@@ -63,5 +63,32 @@ namespace BitcoinBlockexplorer.Controllers
 
             return result;
         }
+
+        [HttpGet]
+        [Route("getrawtransaction")]
+        public async Task<Transaction> GetTransaction(string transactionId)
+        {
+            var result = await _blockExplorerService.GetTransaction(transactionId);
+
+            return result;
+        }
+
+        [HttpPost]
+        [Route("getrawtransactions")]
+        public async Task<List<Transaction>> GetTransactions(List<string> transactionIds)
+        {
+            var result = await _blockExplorerService.GetTransactions(transactionIds);
+
+            return result;
+        }
+        
+        [HttpGet]
+        [Route("getadditionaltxinfo")]
+        public async Task<string> GetAdditionalTxInfo(string transactionId)
+        {
+            var result = await _blockExplorerService.GetAdditionalTxInfo(transactionId);
+
+            return result;
+        }
     }
 }

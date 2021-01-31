@@ -51,10 +51,10 @@
                 <div class="w-100"><hr></div>  
 
                 <div class="col text-left title">Block reward</div>
-                <div class="col text-right">{{$satoshiToBTC(blockStatistics.subsidy)}} BTC</div>
+                <div class="col text-right">{{$satoshiToBTC(blockStatistics.subsidy)}} tBTC</div>
                 <div class="w-100"></div>                
                 <div class="col text-left title">Fee reward</div>
-                <div class="col text-right">{{$satoshiToBTC(blockStatistics.totalfee)}} BTC</div>
+                <div class="col text-right">{{$satoshiToBTC(blockStatistics.totalfee)}} tBTC</div>
                 <div class="w-100"></div>                
             </div>            
         </div>           

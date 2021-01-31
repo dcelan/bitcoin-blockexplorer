@@ -28,6 +28,7 @@ namespace BitcoinBlockexplorer.Models
         public int ancestorsize { get; set; }
         public int ancestorfees { get; set; }
         public string wtxid { get; set; }
+        public string txid { get; set; }
         public List<object> depends { get; set; }
         public List<object> spentby { get; set; }
         [JsonProperty("bip125-replaceable")]

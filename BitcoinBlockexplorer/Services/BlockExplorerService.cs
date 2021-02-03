@@ -119,6 +119,13 @@ namespace BitcoinBlockexplorer.Services
             return transaction;
         }
 
+        public async Task<string> GetAdditionalTransactionInfo(string txid)
+        {
+            var response = await GetResultFromBlockChairWebPage("transaction/" + txid);
+
+            return response;
+        }
+
         public async Task<List<MempoolEntry>> GetMempoolEntries(List<string> txids)
         {            
             var mempoolEntries = new List<MempoolEntry>();
@@ -146,12 +153,32 @@ namespace BitcoinBlockexplorer.Services
 
             return mempoolEntry;
         }
-        
-        public async Task<string> GetAdditionalTxInfo(string txid)
+
+        public async Task<AddressInfo> GetAddressInfo(string address)
+        {
+            var queryString = CreateRequestData("getaddressinfo", new List<string> { address });
+            var result = await _httpClient.PostAsync("/", queryString);
+            var jsonResponse = await result.Content.ReadAsStringAsync();
+            var addressInfo = JsonConvert.DeserializeObject<AddressInfo>(jsonResponse);
+
+            if (addressInfo.error != null)
+                throw new Exception(jsonResponse);
+
+            return addressInfo;
+        }
+
+        public async Task<string> GetAdditionalAddressInfo(string address)
+        {
+            var response = await GetResultFromBlockChairWebPage("address/" + address);
+
+            return response;
+        }
+
+        private async Task<string> GetResultFromBlockChairWebPage(string request)
         {
             var client = new HttpClient();
-            var result = await client.GetAsync("https://api.blockchair.com/bitcoin/testnet/dashboards/transaction/" + txid);
-            var jsonResponse = await result.Content.ReadAsStringAsync();            
+            var result = await client.GetAsync("https://api.blockchair.com/bitcoin/testnet/dashboards/" + request);
+            var jsonResponse = await result.Content.ReadAsStringAsync();
 
             return jsonResponse;
         }
@@ -160,13 +187,13 @@ namespace BitcoinBlockexplorer.Services
         {
             var requestData = new BitcoinApiRequestData()
             {
-                Jsonrpc = "1.0",
-                Id = "curltest",
-                Method = methodName,
+                jsonrpc = "1.0",
+                id = "curltest",
+                method = methodName,
                 Params = parameters
             };
 
-            var queryJson = JsonConvert.SerializeObject(requestData).ToLower();
+            var queryJson = JsonConvert.SerializeObject(requestData).Replace("Params", "params");
             var queryString = new StringContent(queryJson, Encoding.UTF8, "application/json");
 
             return queryString;

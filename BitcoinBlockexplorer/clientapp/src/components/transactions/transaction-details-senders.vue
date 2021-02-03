@@ -28,7 +28,9 @@
             <div v-for="input in additionalTxDetails.inputs" :key="input.script_hex">
                 <b-row>      
                     <b-col class="lg-6 text-left">{{$satoshiToBTC(input.value)}} tBTC</b-col>              
-                    <b-col class="lg-6 text-right">{{input.recipient}}</b-col>  
+                    <b-col class="lg-6 text-right clickable-text" @click="$emit('show-address-info', input.recipient)">
+                        {{input.recipient}}
+                    </b-col>  
                     <div class="w-100"><hr></div>                  
                 </b-row>                    
             </div>                        

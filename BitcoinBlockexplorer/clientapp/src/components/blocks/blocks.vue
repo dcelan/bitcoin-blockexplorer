@@ -12,7 +12,7 @@ export default {
         startingBlockDetails: null,
         blocks: [],
         fields: [ 
-          { key: 'result.height', label: "Height", sortable: true },
+          { key: 'height', label: "Height", sortable: false },
           { key: 'time', label: "Time", sortable: false },
           { key: 'result.nTx', label: "Transactions", sortable: false },
           { key: 'size', label: "Size (kB)", sortable: false },
@@ -55,8 +55,8 @@ export default {
 
 <template>
   <b-overlay :show="loading" variant="white">
-    <b-card class="mt-1">
-      <div v-if="startingBlockDetails == null">
+    <b-card class="mt-1 bg-white text-dark" style="padding:0 10rem">
+      <div v-if="startingBlockDetails == null" class="bg-light text-dark">
         <b-table outlined
                   hover
                   primary-key="hash"
@@ -75,10 +75,13 @@ export default {
                 <template v-slot:cell(weight)="row">
                       {{$turnToKilo(row.item.result.weight)}}
                 </template>        
+                <template v-slot:cell(height)="row">                      
+                      <div class="text-info"> {{row.item.result.height}} </div>
+                </template>        
         </b-table>
         
         <div class="text-center" style="padding:0.5rem 0">
-          <b-button @click="loadMoreBlocks" variant="outline-secondary">Load More <b-icon icon="arrow-down"></b-icon></b-button>
+          <b-button @click="loadMoreBlocks" variant="outline-info">Load More <b-icon icon="arrow-down"></b-icon></b-button>
         </div>
       </div>
       

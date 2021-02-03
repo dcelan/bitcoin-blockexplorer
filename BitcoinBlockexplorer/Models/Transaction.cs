@@ -7,12 +7,12 @@ namespace BitcoinBlockexplorer.Models
 {
     public class Transaction
     {
-        public Result result { get; set; }
+        public TransactionResult result { get; set; }
         public object error { get; set; }
         public string id { get; set; }
     }
 
-    public class Result
+    public class TransactionResult
     {
         public string txid { get; set; }
         public string hash { get; set; }

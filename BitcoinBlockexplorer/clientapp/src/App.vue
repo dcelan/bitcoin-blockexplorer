@@ -1,11 +1,13 @@
 <script>
 import Axios from 'axios'
-import BlocksAndTransactionsTabs from '@components/blocks-and-transactions-tabs'
+import PageHeader from '@components/layout/page-header'
+import NavBar from '@components/layout/nav-bar'
 
 export default {
   name: 'App',
   components: {
-    BlocksAndTransactionsTabs
+    PageHeader,
+    NavBar
   },
   data() {
       return {
@@ -28,8 +30,8 @@ export default {
 
 <template>
   <div>
-
-    <BlocksAndTransactionsTabs />
-
+    <NavBar />
+    <PageHeader />
+    <router-view> </router-view>
   </div>
 </template>

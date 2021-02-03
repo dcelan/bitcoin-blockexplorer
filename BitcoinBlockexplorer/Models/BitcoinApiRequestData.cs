@@ -7,11 +7,11 @@ namespace BitcoinBlockexplorer.Models
 {
     public class BitcoinApiRequestData
     {
-        public string Jsonrpc { get; set; }
+        public string jsonrpc { get; set; }
 
-        public string Id { get; set; }
+        public string id { get; set; }
 
-        public string Method { get; set; }
+        public string method { get; set; }
 
         public List<string> Params { get; set; }
     }

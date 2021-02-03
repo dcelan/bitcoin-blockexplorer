@@ -84,9 +84,27 @@ namespace BitcoinBlockexplorer.Controllers
         
         [HttpGet]
         [Route("getadditionaltxinfo")]
-        public async Task<string> GetAdditionalTxInfo(string transactionId)
+        public async Task<string> GetAdditionalTransactionInfo(string transactionId)
         {
-            var result = await _blockExplorerService.GetAdditionalTxInfo(transactionId);
+            var result = await _blockExplorerService.GetAdditionalTransactionInfo(transactionId);
+
+            return result;
+        }
+
+        [HttpGet]
+        [Route("getaddressinfo")]
+        public async Task<AddressInfo> GetAddressInfo(string address)
+        {
+            var result = await _blockExplorerService.GetAddressInfo(address);
+
+            return result;
+        }
+
+        [HttpGet]
+        [Route("getadditionaladrinfo")]
+        public async Task<string> GetAdditionalAddressInfo(string address)
+        {
+            var result = await _blockExplorerService.GetAdditionalAddressInfo(address);
 
             return result;
         }

@@ -61,8 +61,8 @@ export default {
       <b-button variant="outline-secondary" @click="$emit('back')"> Back</b-button>
     </div>
 
-    <h5 class="card-title text-primary">Bitcoin block <small class="text-muted"
-        style="font-size:1.5rem">{{blockDetails.result.height}}</small></h5>
+    <h5 class="card-title text-info">Bitcoin block <small class="text-muted"
+        style="font-size:1.5rem">{{blockDetails.result.height}}</small></h5>         
 
     <div class="border-top-0" style="margin-top:-1px">
       <div class="card-body p-1">

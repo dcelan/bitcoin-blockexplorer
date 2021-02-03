@@ -15,6 +15,8 @@ namespace BitcoinBlockexplorer.Services.Interfaces
         Task<MempoolEntry> GetMempoolEntry(string txid);
         Task<List<Transaction>> GetTransactions(List<string> txids);
         Task<Transaction> GetTransaction(string txid);
-        Task<string> GetAdditionalTxInfo(string txid);
+        Task<string> GetAdditionalTransactionInfo(string txid);
+        Task<AddressInfo> GetAddressInfo(string address);
+        Task<string> GetAdditionalAddressInfo(string address);
     }
 }

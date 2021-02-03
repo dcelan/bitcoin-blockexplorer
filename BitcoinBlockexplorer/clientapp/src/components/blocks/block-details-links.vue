@@ -53,16 +53,3 @@
         </div>
     </b-card>
 </template>
-
-<style>
-    .title {
-        font-size:1.2rem
-    }
-    .clickable-icon {
-        cursor:pointer
-    }
-    .clickable-text {
-        cursor:pointer;
-        color: #5bc0de;
-    }
-</style>

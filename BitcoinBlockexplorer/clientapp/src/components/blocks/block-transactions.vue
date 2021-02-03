@@ -17,7 +17,7 @@ export default {
         txDetails: null,
         transactions: [],
         fields: [ 
-          { key: 'result.txid', label: "TXID", sortable: true },
+          { key: 'txid', label: "TXID", sortable: true },
           { key: 'result.size', label: "Size (B)", sortable: true },
           { key: 'value', label: "Output (tBTC)", sortable: true },
         ]
@@ -50,9 +50,10 @@ export default {
 <template>
   <b-overlay :show="loading" variant="white">
     <b-card class="mt-1">
-      <div class="col text-left title" style="color:#0275d8">Block transactions</div>
-      <div class="w-100"><hr></div> 
-      <div v-if="txDetails == null">
+      <h5 v-if="txDetails == null" class="card-title text-info" style="padding-bottom:0.8rem">Block transactions</h5> 
+      <h5 v-else class="card-title text-secondary" style="padding-bottom:0.8rem">Block transactions</h5> 
+      
+      <div v-if="txDetails == null" class="bg-light text-dark">
         <b-table outlined
                   hover
                   primary-key="hash"
@@ -65,6 +66,9 @@ export default {
                 <template v-slot:cell(value)="row">
                       {{$outputTotal(row.item)}}
                 </template>
+                <template v-slot:cell(txid)="row">                      
+                    <div class="text-info"> {{row.item.result.txid}} </div>
+              </template>  
         </b-table>
       </div>  
 

@@ -69,7 +69,7 @@ export default {
         <b-button variant="outline-secondary" @click="$emit('back')"> Back</b-button>
       </div>
 
-      <h5 class="card-title text-primary">Bitcoin transaction</h5>
+      <h5 class="card-title text-info">Bitcoin transaction</h5>
       <p>{{transactionDetails.result.txid}} <b-icon @click="$copyToClipboard(transactionDetails.result.txid)"
           class="clickable-icon" icon="clipboard">
         </b-icon>

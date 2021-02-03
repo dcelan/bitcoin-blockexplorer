@@ -22,7 +22,7 @@
 <template>
     <b-card class="mt-1"> 
         <div v-if="transactionDetails && additionalTxDetails">            
-            <div class="col text-left title" style="color:#0275d8">Recipients</div>
+            <div class="col text-left subtitle">Recipients</div>
             <div class="w-100"><hr></div>
 
             <div v-for="output in additionalTxDetails.outputs" :key="output.script_hex">
@@ -37,17 +37,3 @@
         </div>           
     </b-card>
 </template>
-
-
-<style>
-    .title {
-        font-size:1.2rem
-    }
-    .clickable-icon {
-        cursor:pointer
-    }
-    .clickable-text {
-        cursor:pointer;
-        color: #0275d8;
-    }
-</style>

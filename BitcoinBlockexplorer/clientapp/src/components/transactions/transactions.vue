@@ -12,7 +12,7 @@ export default {
         rawMempool: null, //transactionIds
         transactions: [], //transactions from mempool shown on the screen
         fields: [ 
-          { key: 'result.txid', label: "TXID", sortable: false },
+          { key: 'txid', label: "TXID", sortable: false },
           { key: 'result.size', label: "Size (B)", sortable: true },
           { key: 'value', label: "Output (tBTC)", sortable: false },
         ]
@@ -61,7 +61,7 @@ export default {
 </script>
 
 <template>
-  <b-card class="mt-1">
+  <b-card class="mt-1 bg-white text-dark" style="padding:0 10rem">
     <div v-if="txDetails == null">
       <b-table outlined
                 hover
@@ -75,10 +75,13 @@ export default {
               <template v-slot:cell(value)="row">
                     {{$outputTotal(row.item)}}
               </template>
+              <template v-slot:cell(txid)="row">                      
+                    <div class="text-info"> {{row.item.result.txid}} </div>
+              </template>   
       </b-table>
 
       <div class="text-center" style="padding:0.5rem 0">
-        <b-button @click="loadMoreTransactions" variant="outline-secondary">Load More <b-icon icon="arrow-down">
+        <b-button @click="loadMoreTransactions" variant="outline-info">Load More <b-icon icon="arrow-down">
           </b-icon>
         </b-button>
       </div>

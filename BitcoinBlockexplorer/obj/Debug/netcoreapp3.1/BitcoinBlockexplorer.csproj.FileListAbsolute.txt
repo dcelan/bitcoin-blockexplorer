@@ -28,10 +28,6 @@ C:\Users\dcelan\Documents\GitHub\bitcoin-blockexplorer\BitcoinBlockexplorer\bin\
 C:\Users\dcelan\Documents\GitHub\bitcoin-blockexplorer\BitcoinBlockexplorer\bin\Debug\netcoreapp3.1\BitcoinBlockexplorer.pdb
 C:\Users\dcelan\Documents\GitHub\bitcoin-blockexplorer\BitcoinBlockexplorer\bin\Debug\netcoreapp3.1\BitcoinBlockexplorer.Views.dll
 C:\Users\dcelan\Documents\GitHub\bitcoin-blockexplorer\BitcoinBlockexplorer\bin\Debug\netcoreapp3.1\BitcoinBlockexplorer.Views.pdb
-C:\Users\dcelan\Documents\GitHub\bitcoin-blockexplorer\BitcoinBlockexplorer\bin\Debug\netcoreapp3.1\BlockchainApi.Net.dll
-C:\Users\dcelan\Documents\GitHub\bitcoin-blockexplorer\BitcoinBlockexplorer\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
-C:\Users\dcelan\Documents\GitHub\bitcoin-blockexplorer\BitcoinBlockexplorer\obj\Debug\netcoreapp3.1\BitcoinBlockexplorer.csproj.CoreCompileInputs.cache
-C:\Users\dcelan\Documents\GitHub\bitcoin-blockexplorer\BitcoinBlockexplorer\obj\Debug\netcoreapp3.1\BitcoinBlockexplorer.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\dcelan\Documents\GitHub\bitcoin-blockexplorer\BitcoinBlockexplorer\obj\Debug\netcoreapp3.1\BitcoinBlockexplorer.Views.pdb
 C:\Users\dcelan\Documents\GitHub\bitcoin-blockexplorer\BitcoinBlockexplorer\obj\Debug\netcoreapp3.1\BitcoinBlockexplorer.csproj.CopyComplete
 C:\Users\dcelan\Documents\GitHub\bitcoin-blockexplorer\BitcoinBlockexplorer\obj\Debug\netcoreapp3.1\BitcoinBlockexplorer.dll
@@ -39,3 +35,6 @@ C:\Users\dcelan\Documents\GitHub\bitcoin-blockexplorer\BitcoinBlockexplorer\obj\
 C:\Users\dcelan\Documents\GitHub\bitcoin-blockexplorer\BitcoinBlockexplorer\obj\Debug\netcoreapp3.1\BitcoinBlockexplorer.genruntimeconfig.cache
 C:\Users\dcelan\Documents\GitHub\bitcoin-blockexplorer\BitcoinBlockexplorer\bin\Debug\netcoreapp3.1\clientapp\package-lock.json
 C:\Users\dcelan\Documents\GitHub\bitcoin-blockexplorer\BitcoinBlockexplorer\bin\Debug\netcoreapp3.1\clientapp\package.json
+C:\Users\dcelan\Documents\GitHub\bitcoin-blockexplorer\BitcoinBlockexplorer\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Users\dcelan\Documents\GitHub\bitcoin-blockexplorer\BitcoinBlockexplorer\obj\Debug\netcoreapp3.1\BitcoinBlockexplorer.csproj.CoreCompileInputs.cache
+C:\Users\dcelan\Documents\GitHub\bitcoin-blockexplorer\BitcoinBlockexplorer\obj\Debug\netcoreapp3.1\BitcoinBlockexplorer.MvcApplicationPartsAssemblyInfo.cache

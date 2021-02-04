@@ -55,8 +55,8 @@ export default {
 
 <template>
   <b-overlay :show="loading" variant="white">
-    <b-card class="mt-1 bg-white text-dark" style="padding:0 10rem">
-      <div v-if="startingBlockDetails == null" class="bg-light text-dark">
+    <b-card class="mt-1 bg-white text-dark" style="padding:0 13rem">
+      <div v-if="startingBlockDetails == null">
         <b-table outlined
                   hover
                   primary-key="hash"

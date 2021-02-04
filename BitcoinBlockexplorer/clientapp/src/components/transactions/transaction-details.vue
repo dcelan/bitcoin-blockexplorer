@@ -71,7 +71,7 @@ export default {
 
       <h5 class="card-title text-info">Bitcoin transaction</h5>
       <p>{{transactionDetails.result.txid}} <b-icon @click="$copyToClipboard(transactionDetails.result.txid)"
-          class="clickable-icon" icon="clipboard">
+          class="clickable-icon" style="padding:0 0.6rem" icon="clipboard">
         </b-icon>
       </p>
 

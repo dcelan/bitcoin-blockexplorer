@@ -20,7 +20,7 @@ namespace BitcoinBlockexplorer.Models
         public bool iswatchonly { get; set; }
         public bool isscript { get; set; }
         public bool iswitness { get; set; }
-        public int witness_version { get; set; }
+        public long witness_version { get; set; }
         public string witness_program { get; set; }
         public bool ischange { get; set; }
         public List<object> labels { get; set; }

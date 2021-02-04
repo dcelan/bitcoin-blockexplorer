@@ -16,31 +16,31 @@ namespace BitcoinBlockexplorer.Models
     {
         public string txid { get; set; }
         public string hash { get; set; }
-        public int version { get; set; }
-        public int size { get; set; }
-        public int vsize { get; set; }
-        public int weight { get; set; }
-        public int locktime { get; set; }
+        public long version { get; set; }
+        public long size { get; set; }
+        public long vsize { get; set; }
+        public long weight { get; set; }
+        public long locktime { get; set; }
         public List<Vin> vin { get; set; }
         public List<Vout> vout { get; set; }
         public string hex { get; set; }
         public string blockhash { get; set; }
-        public int confirmations { get; set; }
-        public int time { get; set; }
-        public int blocktime { get; set; }
+        public long confirmations { get; set; }
+        public long time { get; set; }
+        public long blocktime { get; set; }
     }
 
     public class Vin
     {
         public string txid { get; set; }
-        public int vout { get; set; }
+        public long vout { get; set; }
         public ScriptSig scriptSig { get; set; }
         public long sequence { get; set; }
     }
     public class Vout
     {
         public double value { get; set; }
-        public int n { get; set; }
+        public long n { get; set; }
         public ScriptPubKey scriptPubKey { get; set; }
     }
 
@@ -54,7 +54,7 @@ namespace BitcoinBlockexplorer.Models
     {
         public string asm { get; set; }
         public string hex { get; set; }
-        public int reqSigs { get; set; }
+        public long reqSigs { get; set; }
         public string type { get; set; }
         public List<string> addresses { get; set; }
     }    

@@ -1,9 +1,8 @@
 <script>
 import Axios from 'axios'
-// import TransactionDetailsSimpleData from '@components/transactions/transaction-details-simple-data'
-// import TransactionDetailsInputOutput from '@components/transactions/transaction-details-input-output'
-// import TransactionDetailsRecipients from '@components/transactions/transaction-details-recipients'
-// import TransactionDetailsSenders from '@components/transactions/transaction-details-senders'
+import AddressInfoReceivedSpent from '@components/addresses/address-info-received-spent'
+import AddressInfoSimpleData from '@components/addresses/address-info-simple-data'
+import AddressInfoTransactions from '@components/addresses/address-transactions'
 
 export default {
   props: {
@@ -12,10 +11,9 @@ export default {
       },
   },
   components: {
-    // TransactionDetailsSimpleData,
-    // TransactionDetailsInputOutput,
-    // TransactionDetailsRecipients,
-    // TransactionDetailsSenders
+    AddressInfoReceivedSpent,
+    AddressInfoSimpleData,
+    AddressInfoTransactions
   },  
   data() {
       return {
@@ -60,39 +58,37 @@ export default {
 <template>
   <b-overlay :show="loading" variant="white">
     
-    <div v-if="addressInfo || additionalAddressInfo">
+    <div v-if="additionalAddressInfo">
       <div class="text-right">
         <b-button variant="outline-secondary" @click="$emit('back')"> Back</b-button>
       </div>
 
-      <h5 class="card-title text-primary">Address</h5>{{addressInfo}} {{additionalAddressInfo}}
-      <!-- <p>{{addressInfo.result.txid}} <b-icon @click="$copyToClipboard(addressInfo.result.txid)"
-          class="clickable-icon" icon="clipboard">
+      <h5 class="card-title text-info">Address</h5>
+      <p>{{address}} <b-icon @click="$copyToClipboard(address)"
+          class="clickable-icon" style="padding:0 0.6rem" icon="clipboard">
         </b-icon>
       </p>
+   
 
       <div class="border-top-0" style="margin-top:-1px">
         <div class="card-body p-1">
           <b-row>
             <b-col lg="12" class="p-1">
-              <TransactionDetailsSimpleData :addressInfo="addressInfo"  @change-transaction-details="changeAddressInfo" />
+              <AddressInfoSimpleData :addressInfo="addressInfo" :additionalAddressInfo="additionalAddressInfo" />
             </b-col>
           </b-row>
           <b-row>
             <b-col lg="12" class="p-1">
-              <TransactionDetailsInputOutput :addressInfo="addressInfo" :additionalAddressInfo="additionalAddressInfo" />
+              <AddressInfoReceivedSpent :addressInfo="addressInfo" :additionalAddressInfo="additionalAddressInfo" />
             </b-col>
           </b-row>
           <b-row>
-            <b-col lg="6" class="p-1">
-              <TransactionDetailsSenders :addressInfo="addressInfo" :additionalAddressInfo="additionalAddressInfo" />
-            </b-col>
-            <b-col lg="6" class="p-1">
-              <TransactionDetailsRecipients :addressInfo="addressInfo" :additionalAddressInfo="additionalAddressInfo" />
+            <b-col lg="12" class="p-1">
+              <AddressInfoTransactions :transactionsIds="additionalAddressInfo.transactions" />
             </b-col>
           </b-row>
         </div>
-      </div> -->
+      </div>
 
     </div>
   </b-overlay>

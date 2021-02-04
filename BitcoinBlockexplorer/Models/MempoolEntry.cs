@@ -16,17 +16,17 @@ namespace BitcoinBlockexplorer.Models
     public class MempoolEntryResult
     {
         public Fees fees { get; set; }
-        public int size { get; set; }
+        public long size { get; set; }
         public double fee { get; set; }
         public double modifiedfee { get; set; }
-        public int time { get; set; }
-        public int height { get; set; }
-        public int descendantcount { get; set; }
-        public int descendantsize { get; set; }
-        public int descendantfees { get; set; }
-        public int ancestorcount { get; set; }
-        public int ancestorsize { get; set; }
-        public int ancestorfees { get; set; }
+        public long time { get; set; }
+        public long height { get; set; }
+        public long descendantcount { get; set; }
+        public long descendantsize { get; set; }
+        public long descendantfees { get; set; }
+        public long ancestorcount { get; set; }
+        public long ancestorsize { get; set; }
+        public long ancestorfees { get; set; }
         public string wtxid { get; set; }
         public string txid { get; set; }
         public List<object> depends { get; set; }

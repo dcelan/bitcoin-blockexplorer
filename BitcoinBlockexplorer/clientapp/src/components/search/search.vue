@@ -15,7 +15,7 @@ export default {
             loading: false,
             activeComponent: null,
             option: null,
-            input: null,
+            input: '',
             options: [ 
                 { name: 'Block', value: 1 },
                 { name: 'Transaction', value: 2 },
@@ -28,13 +28,8 @@ export default {
     },  
     methods: {
         search() {
-            if (this.option == null){
-                this.$bvToast.toast("Please choose searching option",
-                  { title: "Warning", variant: "warning", solid: true, autoHideDelay:3000 })
-            } else if (this.input == null || this.input.length == 0){
-                this.$bvToast.toast("Please enter search parameter",
-                  { title: "Warning", variant: "warning", solid: true, autoHideDelay:3000 })
-            } else {
+            if (this.input.length != 0){
+
                 this.loading = true
                 this.resetValues()
                 switch (this.option) {
@@ -48,7 +43,7 @@ export default {
                             .catch(error => {
                                 console.log(error.response.data)
                                 this.$bvToast.toast("No block with block hash: " + this.input,
-                                    { title: 'Error', variant: "secondary", solid: true, autoHideDelay:3000 })
+                                    { title: 'No result', variant: "secondary", solid: true, autoHideDelay:3000 })
                             })   
                             .finally(() => {
                                 this.loading = false
@@ -64,7 +59,7 @@ export default {
                             .catch(error => {
                                 console.log(error.response.data)
                                 this.$bvToast.toast("No transaction with transaction id: " + this.input,
-                                    { title: 'Error', variant: "secondary", solid: true, autoHideDelay:3000 })
+                                    { title: 'No result', variant: "secondary", solid: true, autoHideDelay:3000 })
                             })   
                             .finally(() => {
                                 this.loading = false

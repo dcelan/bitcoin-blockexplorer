@@ -44,7 +44,7 @@ export default {
           .catch(error => {
               console.log(error.response.data)
               this.$bvToast.toast("No address: " + address,
-                  { title: 'Error', variant: "secondary", solid: true, autoHideDelay:3000 })
+                  { title: 'No result', variant: "secondary", solid: true, autoHideDelay:3000 })
           })
           .finally(() => {
             this.loading = false

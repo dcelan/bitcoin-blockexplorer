@@ -13,7 +13,7 @@
 
 <template>
     <b-card class="mt-1"> 
-        <div v-if="addressInfo && additionalAddressInfo">  
+        <div v-if="additionalAddressInfo">  
            
             <b-row>
                 <b-col class="lg-6">   

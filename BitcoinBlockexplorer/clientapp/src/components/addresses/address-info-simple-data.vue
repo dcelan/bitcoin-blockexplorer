@@ -13,7 +13,7 @@
 
 <template>
     <b-card class="mt-1">
-        <div v-if="addressInfo && additionalAddressInfo">            
+        <div v-if="additionalAddressInfo">            
            <div v-if="additionalAddressInfo.address.script_hex" style="display:flex; align-items:center;">
                <label style="width:500rem; word-break:break-word; margin-bottom: 0; margin-right: 5px;">Script</label>
                {{additionalAddressInfo.address.script_hex}} <b-icon @click="$copyToClipboard(additionalAddressInfo.address.script_hex)"

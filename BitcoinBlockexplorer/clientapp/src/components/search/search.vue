@@ -29,7 +29,7 @@ export default {
     methods: {
         search() {
             if (this.input.length != 0){
-
+                console.log('searching')
                 this.loading = true
                 this.resetValues()
                 switch (this.option) {
@@ -66,6 +66,7 @@ export default {
                             })                    
                         break;
                     case 3: 
+                        this.address = null
                         this.address = this.input
                         this.activeComponent = 'Address'
                         this.loading = false

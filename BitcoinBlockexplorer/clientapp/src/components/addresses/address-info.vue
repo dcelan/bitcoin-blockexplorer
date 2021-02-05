@@ -28,23 +28,23 @@ export default {
   created() {
     this.changeAddressInfo(this.address)
   },
+  watch: {
+    address: function () {
+        this.changeAddressInfo(this.address)
+    }
+  },
   methods: {
     changeAddressInfo(address){
+      this.loading = true
       if (!address.startsWith("d-"))
         this.getAddressInfo(address)
-      if (this.addressInfo)
-        this.getAdditionalAdrInfo(address)        
+      this.getAdditionalAdrInfo(address)        
     },
     getAddressInfo(address){
       Axios
           .get('/api/BlockChainExplorer/getaddressinfo?address=' + address)
           .then(response => {
               this.addressInfo = response.data.result
-          })
-          .catch(error => {
-              console.log(error.response.data)
-              this.$bvToast.toast("No address: " + address,
-                  { title: 'No result', variant: "secondary", solid: true, autoHideDelay:3000 })
           })
           .finally(() => {
             this.loading = false
@@ -54,7 +54,12 @@ export default {
       Axios
           .get('/api/BlockChainExplorer/getadditionaladrinfo?address=' + address)
           .then(response => {
-              this.additionalAddressInfo = response.data.data[address]
+              if (response.data.data[address].address.script_hex.length == 0){
+                this.$bvToast.toast("No address: " + address,
+                  { title: 'No result', variant: "secondary", solid: true, autoHideDelay:3000 })
+              } else {
+                this.additionalAddressInfo = response.data.data[address]
+              }              
           })
           .finally(() => {
             this.loading = false

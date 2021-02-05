@@ -85,7 +85,7 @@ export default {
         </div>
       </div>
       
-      <BlockDetails v-else :startingBlockDetails="startingBlockDetails" @back="back" />
+      <BlockDetails v-else :startingBlockDetails="startingBlockDetails" @back="back" :search="false" />
     </b-card>
 
   </b-overlay>

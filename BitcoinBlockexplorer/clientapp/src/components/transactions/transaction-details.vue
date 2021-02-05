@@ -11,6 +11,9 @@ export default {
       txDetails: {
           type: Object
       },
+      search: {
+        type: Boolean
+      }
   },
   components: {
     TransactionDetailsSimpleData,
@@ -65,7 +68,7 @@ export default {
   <b-overlay :show="loading" variant="white">
     
     <div v-if="address == null">
-      <div class="text-right">
+      <div v-if="!search" class="text-right">
         <b-button variant="outline-secondary" @click="$emit('back')"> Back</b-button>
       </div>
 
@@ -99,7 +102,7 @@ export default {
       </div>
     </div>
 
-    <AddressInfo v-else :address="address" @back="back" />
+    <AddressInfo v-else :address="address" @back="back" :search="false" />
 
   </b-overlay>
 </template>

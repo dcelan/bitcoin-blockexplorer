@@ -9,8 +9,11 @@ import BlockTransactions from '@components/blocks/block-transactions'
 export default {
   props: {
       startingBlockDetails: {
-          type: Object
+        type: Object
       },
+      search: {
+        type: Boolean
+      }
   },
   components: {
     BlockDetailsSimpleData,
@@ -57,7 +60,7 @@ export default {
 <template>
   <b-overlay :show="loading" variant="white">
     
-    <div class="text-right">
+    <div v-if="!search" class="text-right">
       <b-button variant="outline-secondary" @click="$emit('back')"> Back</b-button>
     </div>
 

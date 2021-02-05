@@ -22,7 +22,7 @@ export default {
       })
       .catch(error => {
           this.$bvToast.toast(error.response.data,
-              { title: this.$t('error'), variant: "danger", solid: true })
+              { title: this.$t('error'), variant: "secondary", solid: true })
       })
   },
 }
@@ -47,5 +47,8 @@ export default {
     .subtitle {
       color: #5bc0de;
       font-weight:bolder;
+    }
+    option:hover {
+      background-color: #5bc0de;
     }
 </style>

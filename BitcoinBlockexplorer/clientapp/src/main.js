@@ -11,10 +11,12 @@ import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 import VueRouter from 'vue-router'
 import Transactions from '@components/transactions/transactions'
 import Blocks from '@components/blocks/blocks'
+import Search from '@components/search/search'
 
 const routes = [
   {path: '/transactions', component: Transactions},
-  {path: '/blocks', component: Blocks}
+  {path: '/blocks', component: Blocks},
+  {path: '/search', component: Search}
 ]
 
 const router = new VueRouter({

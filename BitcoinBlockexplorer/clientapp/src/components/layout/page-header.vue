@@ -6,7 +6,6 @@
                 <h1 class="display-4 font-weight-bold">Bitcoin Testnet Explorer</h1>
                 <p class="font-italic mb-0">You are viewing Bitcoin Testnest block explorer. These coins do not hold any value.</p>
                 <p class="font-italic">Software developers use testnet coins to experiment with the blockchain.</p>
-                <!-- <a href="#" role="button" class="btn btn-primary px-5">See All Features</a> -->
             </div>
         </div>
     </div>    

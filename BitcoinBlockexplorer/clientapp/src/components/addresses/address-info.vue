@@ -9,6 +9,9 @@ export default {
       address: {
           type: String
       },
+      search: {
+        type: Boolean
+      }
   },
   components: {
     AddressInfoReceivedSpent,
@@ -29,13 +32,19 @@ export default {
     changeAddressInfo(address){
       if (!address.startsWith("d-"))
         this.getAddressInfo(address)
-      this.getAdditionalAdrInfo(address)        
+      if (this.addressInfo)
+        this.getAdditionalAdrInfo(address)        
     },
     getAddressInfo(address){
       Axios
           .get('/api/BlockChainExplorer/getaddressinfo?address=' + address)
           .then(response => {
               this.addressInfo = response.data.result
+          })
+          .catch(error => {
+              console.log(error.response.data)
+              this.$bvToast.toast("No address: " + address,
+                  { title: 'Error', variant: "secondary", solid: true, autoHideDelay:3000 })
           })
           .finally(() => {
             this.loading = false
@@ -59,7 +68,7 @@ export default {
   <b-overlay :show="loading" variant="white">
     
     <div v-if="additionalAddressInfo">
-      <div class="text-right">
+      <div v-if="!search" class="text-right">
         <b-button variant="outline-secondary" @click="$emit('back')"> Back</b-button>
       </div>
 

@@ -109,7 +109,7 @@ export default {
         </div>
       </div>  
 
-      <TransactionDetails v-else :txDetails="txDetails" @back="back" />
+      <TransactionDetails v-else :txDetails="txDetails" @back="back" :search="false" />
     </b-card>
   </b-overlay>  
 </template>

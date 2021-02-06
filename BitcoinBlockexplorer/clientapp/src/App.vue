@@ -49,6 +49,6 @@ export default {
       font-weight:bolder;
     }
     option:hover {
-      background-color: #5bc0de;
+      background-color: yellow;
     }
 </style>

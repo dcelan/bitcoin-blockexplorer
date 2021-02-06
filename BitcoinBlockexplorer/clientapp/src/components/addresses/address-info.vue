@@ -30,7 +30,7 @@ export default {
   },
   watch: {
     address: function () {
-        this.changeAddressInfo(this.address)
+      this.changeAddressInfo(this.address)
     }
   },
   methods: {
@@ -57,6 +57,8 @@ export default {
               if (response.data.data[address].address.script_hex.length == 0){
                 this.$bvToast.toast("No address: " + address,
                   { title: 'No result', variant: "secondary", solid: true, autoHideDelay:3000 })
+                this.addressInfo = null
+                this.additionalAddressInfo = null
               } else {
                 this.additionalAddressInfo = response.data.data[address]
               }              

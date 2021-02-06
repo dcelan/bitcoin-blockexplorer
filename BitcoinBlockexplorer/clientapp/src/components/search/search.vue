@@ -25,7 +25,7 @@ export default {
             block: null,
             transaction: null
         }
-    },  
+    },
     methods: {
         search() {
             if (this.input.length != 0){
@@ -81,6 +81,9 @@ export default {
             this.address = null;
             this.block = null;
             this.transaction = null;
+        },
+        clearInput(){
+            this.input = ''
         }
     }
 }
@@ -88,7 +91,7 @@ export default {
 
 <template>
     <div>
-        <div style="padding-left:20rem;padding-right:20rem;padding-bottom:5rem">
+        <div style="padding-left:17rem;padding-right:17rem;padding-bottom:5rem">
             <b-input-group>
                 <template #prepend>
                     <select class="form-control" v-model="option">
@@ -102,6 +105,7 @@ export default {
                 <b-form-input :disabled="option==null" style="padding-left:1rem" v-model="input" placeholder="Search for block hash, transaction id or address"></b-form-input>
                 
                 <b-input-group-append>
+                    <b-button variant="outline-info" @click="clearInput"> Clear</b-button>
                     <b-button variant="outline-info" @click="search"> Search</b-button>
                 </b-input-group-append>            
             </b-input-group>

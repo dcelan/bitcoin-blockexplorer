@@ -51,14 +51,14 @@ export default {
     },
     loadMoreTransactions() {
       this.loading = true
-      var increasement = 10
-      if ((this.transactions.length + increasement) > this.transactionIds.length){
-        increasement = this.transactionIds.length - this.transactions.length
+      var increment = 10
+      if ((this.transactions.length + increment) > this.transactionIds.length){
+        increment = this.transactionIds.length - this.transactions.length
       }
-      if (increasement <= 0){
+      if (increment <= 0){
         this.loadPreviousBlockTransactions()
       } else {
-        this.getTransactions(this.transactionIds.slice(this.transactions.length, this.transactions.length + increasement)) 
+        this.getTransactions(this.transactionIds.slice(this.transactions.length, this.transactions.length + increment)) 
       }       
     },
     getTransactions(transactionIds){

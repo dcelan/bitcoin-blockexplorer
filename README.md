@@ -1,3 +1,3 @@
 # bitcoin-blockexplorer
 
-Still in the making. College course project.
+Simple bitcoin block explorer made for college course project.
